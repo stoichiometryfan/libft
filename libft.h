@@ -12,7 +12,7 @@ int	ft_isprint(int c);
 int	ft_toupper(int c);
 int	ft_tolower(int c);
 char	*ft_strncpy(char *dest, char *src, unsigned int n);
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
+unsigned int	ft_strlcpy(char *dest,const char *src, unsigned int size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 void	*ft_memchr(const void *ptr,int c,unsigned int n);
 char	*ft_strchr(const char *s, int c);

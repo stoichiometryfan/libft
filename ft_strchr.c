@@ -15,8 +15,3 @@ char *ft_strchr(const char *s, int c)
 
 	
 }
-#include <stdio.h>
-int main (void)
-{
-	printf("%s",ft_strchr("hello world", 's'));
-}
