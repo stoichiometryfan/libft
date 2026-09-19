@@ -2,7 +2,7 @@
 #include <stdio.h>
 int main()
 {
-        int n=1234;
+        int n=9;
 	size_t length_of_number;
         char buffer[100]={0};
         //char* stringint;
@@ -15,21 +15,27 @@ int main()
         //stringint =malloc(length_of_number)
         //if(stringint==NULL)
         //      return NULL;
-        while(n/10!=0)
+	if(n>0 && n<=9)
+                printf("%c \n",n+'0');
+        while(n>0)
         {
-                if(n/10!=0)
-                {
-                        length_of_number++;
-                }
-                
+                length_of_number++; 
                 while(i<length_of_number)
                 {
-                        *(buffer+i)=(n%10)+"0";
-                        putchar(*buffer);
-			putchar('\n');
+                        *(buffer+i)=(n%10)+'0';
+                        //printf(" i=%ld buffer[%ld]",i,i);
+			//putchar(*(buffer+i));
+			//putchar('\n');
                         i++;
                 }
                 n=n/10;
         }
+	printf("length of number is %ld",length_of_number);
 }
+//char * itoa(int n)
+//{
+	
+	
+//}
+
 

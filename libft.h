@@ -24,6 +24,6 @@ char	*ft_strdup(const char *s);
 void	*ft_calloc(size_t nmemb,size_t size);
 size_t	ft_strlen(const char* c);
 int	ft_isalnum(char c);
-
+char *ft_strjoin(char const *s1,char const *s2);
 
 #endif

@@ -12,10 +12,10 @@ char *ft_strjoin(char const *s1,char const *s2)
 	return new_str;
 	
 }
-#include <stdio.h>
-int main()
+//#include <stdio.h>
+/*int main()
 {
 	char const* str1="ibrahim";
 	char const* str2=" ranoosh";
 	printf("%s",ft_strjoin(str1,str2));
-}
+}*/
