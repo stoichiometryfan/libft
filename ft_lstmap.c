@@ -1,40 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ielabdal <ielabdal@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/20 15:00:27 by ielabdal          #+#    #+#             */
-/*   Updated: 2026/09/20 15:00:28 by ielabdal         ###   ########.fr       */
+/*   Created: 2026/09/19 13:00:34 by ielabdal          #+#    #+#             */
+/*   Updated: 2026/09/19 18:25:03 by ielabdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
-char *ft_strnstr(const char *big,const char *little,size_t len)
+t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	size_t	i;
-	size_t	j;
-
-	i=0;
-	j=0;
-	if(!*little)
-		return (char *)big;
-	size_t little_len=0;
-	while (little[little_len] != '\0')
-		little_len++;
-	if (len < little_len)
+	t_list *tmp=lst;
+	t_list *new_element;
+	t_list *newlist;
+	void *new_content;
+	if(!lst || !f || !del)
 		return NULL;
-	while(i <= (len-little_len))
+	newlist=NULL;
+	while(tmp!=NULL)
 	{
-		if(big[i]=='\0')
-			break;
-		while(j<little_len && big[i+j]==little[j])
+		new_content=f(tmp->content);
+		new_element = ft_lstnew(new_content);
+		if(new_element==NULL)
 		{
-			j++;
+			del(new_content);
+			ft_lstclear(&newlist, del);
+			return (NULL);
 		}
-		if(j==little_len)
-			return (char *)(big+i);
+		ft_lstadd_back(&newlist,new_element);
+		tmp=tmp->next;
 	}
-	return NULL;
+	return (newlist);
 }

@@ -1,7 +1,16 @@
-void delete(void *content)
-{
-	free(content)
-}
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ielabdal <ielabdal@learner.42.tech>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/19 18:23:19 by ielabdal          #+#    #+#             */
+/*   Updated: 2026/09/19 18:23:21 by ielabdal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 void ft_lstdelone(t_list *lst ,void (*del)(void *))
 {
 	void *con;
