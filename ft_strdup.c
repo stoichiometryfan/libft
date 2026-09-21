@@ -11,23 +11,22 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-char *ft_strdup(const char *s)
-{
-	size_t i;
-	char* dupstr;
-	size_t sizofdup;
 
-	i=0;
-	while(*(s+i)!='\0')
+char	*ft_strdup(const char *s)
+{
+	size_t	i;
+	char	*dupstr;
+	size_t	sizofdup;
+
+	i = 0;
+	while (*(s + i) != '\0')
 	{
 		i++;
 	}
-
 	sizofdup = (i + 1);
 	dupstr = (char *)malloc(sizofdup);
 	if (dupstr == NULL)
-		return NULL;
-
-	ft_memcpy (dupstr ,s ,sizofdup);
-	return dupstr;
+		return (NULL);
+	ft_memcpy(dupstr, s, sizofdup);
+	return (dupstr);
 }
