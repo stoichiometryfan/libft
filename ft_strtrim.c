@@ -6,7 +6,7 @@
 /*   By: ielabdal <ielabdal@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/20 15:00:51 by ielabdal          #+#    #+#             */
-/*   Updated: 2026/09/21 15:57:18 by ielabdal         ###   ########.fr       */
+/*   Updated: 2026/09/23 17:24:32 by ielabdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -24,6 +24,7 @@ int	is_set(char c, char const *set)
 	}
 	return (0);
 }
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	end;

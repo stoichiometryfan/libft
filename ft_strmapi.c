@@ -6,23 +6,18 @@
 /*   By: ielabdal <ielabdal@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/19 18:41:15 by ielabdal          #+#    #+#             */
-/*   Updated: 2026/09/19 18:43:05 by ielabdal         ###   ########.fr       */
+/*   Updated: 2026/09/23 17:07:29 by ielabdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	function(unsigned int n, char c)
-{
-	return (c + n);
-}
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	size_t	i;
 	char	*rtrn_string;
 
 	i = 0;
-	f = &function;
 	if (!s || !f)
 		return (NULL);
 	rtrn_string = malloc(ft_strlen(s) + 1);

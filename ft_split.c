@@ -6,7 +6,7 @@
 /*   By: ielabdal <ielabdal@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/19 18:29:16 by ielabdal          #+#    #+#             */
-/*   Updated: 2026/09/21 16:36:41 by ielabdal         ###   ########.fr       */
+/*   Updated: 2026/09/23 16:21:14 by ielabdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ size_t	token_count(char const *s, char c)
 	}
 	return (count);
 }
+
 size_t	chars_in_token(char const *s, char c)
 {
 	size_t	count;
@@ -43,10 +44,7 @@ size_t	chars_in_token(char const *s, char c)
 		count++;
 	return (count);
 }
-char	*malloctokens(size_t char_count_token)
-{
-	return (char *)malloc(char_count_token + 1);
-}
+
 static void	free_func(char **token_to_cpy, size_t allocated_count)
 {
 	while (allocated_count > 0)
@@ -56,6 +54,7 @@ static void	free_func(char **token_to_cpy, size_t allocated_count)
 	}
 	free(token_to_cpy);
 }
+
 int	fill(char const *s, char **token_to_cpy, char c)
 {
 	size_t	i;
@@ -66,40 +65,35 @@ int	fill(char const *s, char **token_to_cpy, char c)
 	{
 		while (*s && *s == c)
 			s++;
-		if (*s)
+		if (!*s)
+			break ;
+		len = chars_in_token(s, c);
+		token_to_cpy[i] = (char *)malloc(len + 1);
+		if (!token_to_cpy[i])
 		{
-			len = chars_in_token(s, c);
-			token_to_cpy[i] = malloctokens(len);
-			if (!token_to_cpy[i])
-			{
-				free_func(token_to_cpy, i);
-				return (0);
-			}
-			ft_strlcpy(token_to_cpy[i], s, len + 1);
-			s += len;
-			i++;
+			free_func(token_to_cpy, i);
+			return (0);
 		}
+		ft_strlcpy(token_to_cpy[i], s, len + 1);
+		s += len;
+		i++;
 	}
 	return (1);
 }
+
 char	**ft_split(char const *s, char c)
 {
 	size_t	tokens;
+	char	**token_v;
 
-	// 1)count the words or tokens in str
-	// 2)allocate the memory
-	// 3)cpy the token in the correcct position
-	char **token_v; // argv
 	if (s == NULL)
 		return (NULL);
 	tokens = 0;
 	tokens = token_count(s, c);
-	// malloc the space for all ptrs
 	token_v = (char **)malloc((tokens + 1) * sizeof(char *));
 	if (NULL == token_v)
 		return (NULL);
 	token_v[tokens] = NULL;
-	// cpy all the strings in the correct position
 	if (!fill(s, token_v, c))
 		return (NULL);
 	return (token_v);
